@@ -1,42 +1,78 @@
 import { Component } from 'react';
 import './App.css';
-import Triggzz from './Person/Person'
+import Person from './Person/Person.js'
 
 class App extends Component {
+
   state = {
-    persons: [
-      {name: 'Phillz', age: 12},
-      {name: 'ANU', age: 22},
-      {name: 'Joel', age: 32}
-      
-    ]
-
-  }
-
-  switchNameHandler=()=>{
-    this.setState = {
       persons:[
-        {name: "Timo", age: 2},
-        {name: "Waz", age: 22},
-        {name: "Seyi", age: 32}
-
-      ]
+        {name:'Pancho', age:17},
+        {name:'Anu', age:29},
+        {name:'Nonso', age:15}
+      ],
+      showPerson : false
     }
-  }
-  render(){
-  return (
-    <div className='App'>
-      <h1> Bola Ahmed Tinubu. BAT </h1>
-      
-      <Triggzz name = {this.state.persons[0].name} age  ={this.state.persons[0].age} />
-      <Triggzz name = {this.state.persons[1].name } age ={this.state.persons[1].age} />
-      <Triggzz name = {this.state.persons[2].name } age ={this.state.persons[2].age} />
 
-      <button onClick={this.switchNameHandler}> SWITCH NAME </button>
-      
+    switchNameHandler = (newName) =>{
+      this.setState({
+        persons: [
+        {name:newName, age:7},
+        {name:'Anuoluwa', age:19},
+        {name: newName, age:35}
+          ]
+        })
+    };
+
+    nameChangedHandler = (event) =>{
+      this.setState({
+        persons: [
+        {name: event.target.value, age:7},
+        {name: 'Adun', age:19},
+        {name: 'Triggzz', age:35}
+          ]
+        })
+    };
+  
+    showPersonHandler = () =>{
+      const doesShow = this.state.showPerson
+
+      this.setState({
+        showPerson : !doesShow
+      })
+    }
+
+   
+
+  render(){
+
+    let people = null;
+    if(this.state.showPerson){
+       people = <div>
+        <Person 
+         changed = {this.nameChangedHandler}
+         name = {this.state.persons[0].name}
+         age = {this.state.persons[0].age}/>
+         <Person
+         name = {this.state.persons[1].name}
+         age = {this.state.persons[1].age}/>
+         <Person
+         name = {this.state.persons[2].name}
+         age = {this.state.persons[2].age}/>
+        </div> 
+    }
+
+  return (
+    <div className="App">
+        <h1>Hello, World! Get Your Freaking PVC</h1>
+        <button onClick={this.showPersonHandler}> Switch </button>
+        {people}
+        
+     
+
     </div>
-  )
-  }
+  );
+}
+
 }
 
 export default App;
