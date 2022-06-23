@@ -41,7 +41,7 @@ class App extends Component {
       })
     }
 
-   
+   npm 
 
   render(){
 
@@ -63,7 +63,7 @@ class App extends Component {
 
   return (
     <div className="App">
-        <h1>Hello, World! Get Your Freaking PVC</h1>
+        <h1>Hello citizens of Nigeria  ! Get Your Freaking PVC</h1>
         <button onClick={this.showPersonHandler}> Switch </button>
         {people}
         
