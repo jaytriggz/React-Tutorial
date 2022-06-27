@@ -1,75 +1,42 @@
 import { Component } from 'react';
-import './App.css';
-import Person from './Person/Person.js'
+import Home from './Home';
+
+
+
+
 
 class App extends Component {
 
   state = {
-      persons:[
-        {name:'Pancho', age:17},
-        {name:'Anu', age:29},
-        {name:'Nonso', age:15}
-      ],
-      showPerson : false
-    }
+    my_length: ''
+  }
 
-    switchNameHandler = (newName) =>{
-      this.setState({
-        persons: [
-        {name:newName, age:7},
-        {name:'Anuoluwa', age:19},
-        {name: newName, age:35}
-          ]
-        })
-    };
-
-    nameChangedHandler = (event) =>{
-      this.setState({
-        persons: [
-        {name: event.target.value, age:7},
-        {name: 'Adun', age:19},
-        {name: 'Triggzz', age:35}
-          ]
-        })
-    };
-  
-    showPersonHandler = () =>{
-      const doesShow = this.state.showPerson
-
-      this.setState({
-        showPerson : !doesShow
+  check = (e)=>{
+    if (e.target.value.length < 5){
+      this.setState({ 
+        my_length: `The total Character ${e.target.value.length}  is too short`
       })
     }
+    else{
+      this.setState({
+        my_length: e.target.value.length + ' long enough'
+      })
+    }
+  }
 
-   
+  
 
   render(){
 
-    let people = null;
-    if(this.state.showPerson){
-       people = <div>
-        <Person 
-         changed = {this.nameChangedHandler}
-         name = {this.state.persons[0].name}
-         age = {this.state.persons[0].age}/>
-         <Person
-         name = {this.state.persons[1].name}
-         age = {this.state.persons[1].age}/>
-         <Person
-         name = {this.state.persons[2].name}
-         age = {this.state.persons[2].age}/>
-        </div> 
-    }
+    
 
   return (
-    <div className="App">
-        <h1>Hello, World! Get Your Freaking PVC</h1>
-        <button onClick={this.showPersonHandler}> Switch </button>
-        {people}
-        
-     
 
+    <div>
+    <Home name={this.state.my_length} change={(e)=>this.check(e)} /> 
     </div>
+
+  
   );
 }
 
