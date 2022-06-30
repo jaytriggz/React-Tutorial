@@ -24,13 +24,26 @@ class App extends Component {
     }
   }
 
+<<<<<<< HEAD
   
+=======
+   npm 
+>>>>>>> a29e5fa65cdf750303306bb18aa00cffd48e3eb4
 
   render(){
 
     
 
   return (
+<<<<<<< HEAD
+=======
+    <div className="App">
+        <h1>Hello citizens of Nigeria  ! Get Your Freaking PVC</h1>
+        <button onClick={this.showPersonHandler}> Switch </button>
+        {people}
+        
+     
+>>>>>>> a29e5fa65cdf750303306bb18aa00cffd48e3eb4
 
     <div>
     <Home name={this.state.my_length} change={(e)=>this.check(e)} /> 
