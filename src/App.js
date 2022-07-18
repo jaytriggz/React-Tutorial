@@ -4,6 +4,12 @@ import Person  from './Person/Person.js';
 import Radium from 'radium'
 //switching name/
 class App extends Component {
+  constructor(props){
+    super(props)
+    console.log('[app.js] constructor');
+  }
+
+  
   state={
     persons:[
       {name:'PHILPZ',age:12},
@@ -11,6 +17,13 @@ class App extends Component {
       {name:'JOEL',age:7},
     ],
     showPersons: false
+  }
+  static getDerivedStateFromProps(props, state){
+    console.log('[app.js] get derived running', props);
+    return state;
+  }
+  componentDidMount(){
+    console.log('[app.js] componentDidMount running');
   }
    //new name/
   setNameHandler = (newName) => {
@@ -54,10 +67,13 @@ class App extends Component {
       }
     }
 
+    console.log('[app.js] render rendering');
+
     let people= null
 
     if(this.state.showPersons){
-     people= <div>
+     people = 
+     <div>
       <Person name={this.state.persons[0].name} 
       age={this.state.persons[0].age}></Person>
 
